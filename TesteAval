@@ -1,0 +1,228 @@
+# Prova de Lógica de Programação com Python
+# Professor Rodrigo Moreira
+
+# Questão 1: Estruturas Condicionais
+def questao_1():
+    numero = int(input("Digite um número inteiro: "))
+    if numero % 2 == 0:
+        print(f"O número {numero} é par.")
+    else:
+        print(f"O número {numero} é ímpar.")
+
+# Questão 2: Estruturas de Repetição
+def questao_2():
+    for i in range(1, 101):
+        if i % 5 == 0:
+            print(f"{i} Buzz")
+        else:
+            print(i)
+
+# Questão 3: Funções
+def calcula_fatorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * calcula_fatorial(n - 1)
+
+def questao_3():
+    numero = int(input("Digite um número inteiro para calcular o fatorial: "))
+    print(f"O fatorial de {numero} é {calcula_fatorial(numero)}.")
+
+# Questão 4: Listas
+def questao_4():
+    numeros = []
+    for i in range(10):
+        numero = int(input(f"Digite o número {i + 1}: "))
+        numeros.append(numero)
+    print(f"A soma dos números é {sum(numeros)}.")
+
+# Questão 5: Dicionários
+def questao_5():
+    agenda = {}
+    while True:
+        nome = input("Digite o nome do contato (ou 'sair' para finalizar): ")
+        if nome.lower() == 'sair':
+            break
+        telefone = input(f"Digite o telefone de {nome}: ")
+        agenda[nome] = telefone
+    for nome, telefone in agenda.items():
+        print(f"{nome}: {telefone}")
+
+# Questão 6: Manipulação de Strings
+def questao_6():
+    texto = input("Digite uma frase: ").lower()
+    vogais = "aeiou"
+    contador = 0
+    for letra in texto:
+        if letra in vogais:
+            contador += 1
+    print(f"Número de vogais: {contador}")
+
+# Questão 7: Estruturas Condicionais e Repetição
+def eh_primo(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n ** 2) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+def questao_7():
+    numero = int(input("Digite um número inteiro: "))
+    if eh_primo(numero):
+        print(f"O número {numero} é primo.")
+    else:
+        print(f"O número {numero} não é primo.")
+
+# Questão 8: Listas e Funções
+def filtra_pares(lista):
+    return [numero for numero in lista if numero % 2 == 0]
+
+def questao_8():
+    lista = [int(input(f"Digite o número {i + 1}: ")) for i in range(10)]
+    pares = filtra_pares(lista)
+    print(f"Números pares: {pares}")
+
+# Questão 9: Dicionários e Estruturas Condicionais
+def questao_9():
+    nome = input("Digite o nome do aluno: ")
+    nota = float(input(f"Digite a nota final de {nome}: "))
+    if nota >= 7:
+        print(f"{nome} foi aprovado.")
+    else:
+        print(f"{nome} foi reprovado.")
+
+# Questão 10: Funções Recursivas
+def fibonacci(n):
+    if n <= 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fibonacci(n - 1) + fibonacci(n - 2)
+
+def questao_10():
+    numero = int(input("Digite o enésimo número da sequência de Fibonacci: "))
+    print(f"O {numero}º número de Fibonacci é {fibonacci(numero)}.")
+
+# Questão 11: Arquivos
+def questao_11():
+    nome_arquivo = input("Digite o nome do arquivo: ")
+    try:
+        with open(nome_arquivo, 'r') as arquivo:
+            conteudo = arquivo.read()
+            palavras = conteudo.split()
+            print(f"O arquivo contém {len(palavras)} palavras.")
+    except FileNotFoundError:
+        print("Arquivo não encontrado.")
+
+# Questão 12: Manipulação de Dados
+def data_valida(dia, mes, ano):
+    try:
+        import datetime
+        datetime.datetime(ano, mes, dia)
+        return True
+    except ValueError:
+        return False
+
+def questao_12():
+    dia = int(input("Digite o dia: "))
+    mes = int(input("Digite o mês: "))
+    ano = int(input("Digite o ano: "))
+    if data_valida(dia, mes, ano):
+        print("A data é válida.")
+    else:
+        print("A data é inválida.")
+
+# Questão 13: Tuplas
+def questao_13():
+    lista = [int(input(f"Digite o número {i + 1}: ")) for i in range(10)]
+    menor = min(lista)
+    maior = max(lista)
+    print(f"O menor número é {menor} e o maior é {maior}.")
+
+# Questão 14: Manipulação de Matrizes
+def soma_matrizes(matriz1, matriz2):
+    return [[matriz1[i][j] + matriz2[i][j] for j in range(len(matriz1[0]))] for i in range(len(matriz1))]
+
+def questao_14():
+    matriz1 = [[int(input(f"Digite o elemento [{i}][{j}] da matriz 1: ")) for j in range(2)] for i in range(2)]
+    matriz2 = [[int(input(f"Digite o elemento [{i}][{j}] da matriz 2: ")) for j in range(2)] for i in range(2)]
+    resultado = soma_matrizes(matriz1, matriz2)
+    print("Resultado da soma das matrizes:")
+    for linha in resultado:
+        print(linha)
+
+# Questão 15: Compreensão de Listas
+def questao_15():
+    quadrados = [i ** 2 for i in range(1, 11)]
+    print(f"Os quadrados dos números de 1 a 10 são: {quadrados}")
+
+# Questão 16: Ordenação de Listas
+def questao_16():
+    lista = [input(f"Digite a string {i + 1}: ") for i in range(5)]
+    lista.sort()
+    print(f"Lista ordenada: {lista}")
+
+# Questão 17: POO - Classes e Objetos
+class Pessoa:
+    def __init__(self, nome, idade):
+        self.nome = nome
+        self.idade = idade
+
+    def exibir_informacoes(self):
+        print(f"Nome: {self.nome}, Idade: {self.idade}")
+
+def questao_17():
+    nome = input("Digite o nome: ")
+    idade = int(input("Digite a idade: "))
+    pessoa = Pessoa(nome, idade)
+    pessoa.exibir_informacoes()
+
+# Questão 18: Exceções
+def questao_18():
+    try:
+        numerador = float(input("Digite o numerador: "))
+        denominador = float(input("Digite o denominador: "))
+        resultado = numerador / denominador
+        print(f"O resultado da divisão é {resultado}.")
+    except ZeroDivisionError:
+        print("Erro: Não é possível dividir por zero.")
+
+# Questão 19: Listas e Loops
+import random
+
+def questao_19():
+    lista = [random.randint(1, 100) for _ in range(10)]
+    multiplos_de_3 = [numero for numero in lista if numero % 3 == 0]
+    print(f"Lista: {lista}")
+    print(f"Números múltiplos de 3: {multiplos_de_3}")
+
+# Questão 20: Dicionários e Listas
+def questao_20():
+    dicionario = {i: [i * j for j in range(1, 11)] for i in range(1, 6)}
+    for chave, valor in dicionario.items():
+        print(f"{chave}: {valor}")
+
+# Chamando as funções das questões
+if __name__ == "__main__":
+    questao_1()
+    questao_2()
+    questao_3()
+    questao_4()
+    questao_5()
+    questao_6()
+    questao_7()
+    questao_8()
+    questao_9()
+    questao_10()
+    questao_11()
+    questao_12()
+    questao_13()
+    questao_14()
+    questao_15()
+    questao_16()
+    questao_17()
+    questao_18()
+    questao_19()
+    questao_20()
